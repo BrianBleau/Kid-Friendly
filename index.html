@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" type="image/png" href="/icon.png" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script defer src="script.js"></script>
+    <title>Kid-Friendly</title>
+  </head>
+  <body>
+    <div class="sidebar">
+      <img src="logo.png" alt="Logo" class="logo" />
+
+      <ul class="visits">
+        <form class="form hidden">
+          <div class="form__row" id="title">
+            <label class="form__label">Title:</label>
+            <input
+              type="text"
+              class="form__input--title"
+              style="width: 13rem"
+            />
+          </div>
+          <div class="form__row" id="rating">
+            <label class="form__label">Rating:</label>
+            <select class="form__input--rating">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </div>
+          <div class="form__row" id="bathroom">
+            <label class="form__label">Bathrooms:</label>
+            <select name="" class="form__input--bathroom">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+          <div class="form__row" id="changing">
+            <label class="form__label">Changing Table:</label>
+            <select name="" class="form__input--changing">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+          <div class="form__row" id="feeding">
+            <label class="form__label">Feeding Area:</label>
+            <select name="" class="form__input--feeding" id="">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+          <div class="form__row" id="summary">
+            <label class="form__label">Summary:</label>
+            <textarea
+              name="summary"
+              class="form__input--summary"
+              id=""
+              cols="40"
+              rows="3"
+            ></textarea>
+          </div>
+          <div class="form__row" id="button">
+            <button class="form__input">Submit</button>
+          </div>
+        </form>
+      </ul>
+    </div>
+    <div id="map"></div>
+  </body>
+</html>
