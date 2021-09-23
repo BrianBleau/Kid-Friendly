@@ -57,6 +57,7 @@ class App {
   #visits = [];
   constructor() {
     this._getPosition();
+    this._getLocalStorage();
     form.addEventListener("submit", this._newVisit.bind(this));
     containerVisits.addEventListener("click", this._moveToMarker.bind(this));
   }
@@ -72,13 +73,17 @@ class App {
     const { latitude } = position.coords;
     const { longitude } = position.coords;
     const coords = [latitude, longitude];
-    this.#map = L.map("map").setView(coords, 13);
+    this.#map = L.map("map").setView(coords, 15);
 
     L.tileLayer("https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png", {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(this.#map);
     this.#map.on("click", this._showForm.bind(this));
+    this.#visits.forEach((visit) => {
+      this._renderVisit(visit);
+      this._renderMarker(visit);
+    });
   }
   _showForm(mapE) {
     this.#mapEvent = mapE;
@@ -138,6 +143,7 @@ class App {
     this._renderMarker(visit);
     this._renderVisit(visit);
     this._hideForm();
+    this._setLocalStorage();
   }
   _renderMarker(visit) {
     L.marker(visit.coords)
@@ -176,12 +182,24 @@ class App {
     const visit = this.#visits.find(
       (visit) => visit.id === visitEle.dataset.id
     );
-    this.#map.setView(visit.coords, 13, {
+    this.#map.setView(visit.coords, 15, {
       animate: true,
       pan: {
         duration: 1,
       },
     });
+  }
+  _setLocalStorage() {
+    localStorage.setItem("visits", JSON.stringify(this.#visits));
+  }
+  _getLocalStorage() {
+    const data = JSON.parse(localStorage.getItem("visits"));
+    if (!data) return;
+    this.#visits = data;
+  }
+  reset() {
+    localStorage.removeItem("visits");
+    location.reload();
   }
 }
 
