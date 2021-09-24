@@ -84,7 +84,7 @@ class App {
       this._renderVisit(visit);
       this._renderMarker(visit);
     });
-    this.#map.setView(coords);
+    this.#map.setView(coords, 15);
   }
   _showForm(mapE) {
     this.#mapEvent = mapE;
