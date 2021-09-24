@@ -165,14 +165,12 @@ class App {
     <li class="visit visit--${visit.custom}" data-id="${visit.id}">
     <h2 class="visit__title">${visit.title} on ${visit.displayDate}</h2>
     <h2 class="visit__rating">Rating: ${visit.rating}</h2>
-    <div class="visit__details">
       <span class="visit__bathroom">Bathrooms: ${visit.bathroom}</span>
       <span class="visit__changing">Changing Table: ${visit.changing}</span>
       <span class="visit__feeding">Feeding Area: ${visit.feeding}</span>
       <span class="visit__summary"
         >Summary: ${visit.summary}</span
       >
-    </div>
   </li>`;
     form.insertAdjacentHTML("afterend", html);
   }
