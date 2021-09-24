@@ -84,6 +84,7 @@ class App {
       this._renderVisit(visit);
       this._renderMarker(visit);
     });
+    this.#map.setView(coords);
   }
   _showForm(mapE) {
     this.#mapEvent = mapE;
@@ -137,14 +138,14 @@ class App {
       summary,
       custom
     );
-    console.log(visit);
-    this.#visits.push(visit);
 
+    this.#visits.push(visit);
     this._renderMarker(visit);
     this._renderVisit(visit);
     this._hideForm();
     this._setLocalStorage();
   }
+
   _renderMarker(visit) {
     L.marker(visit.coords)
       .addTo(this.#map)
